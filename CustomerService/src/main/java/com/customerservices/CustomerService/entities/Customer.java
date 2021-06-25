@@ -1,12 +1,14 @@
 package com.customerservices.CustomerService.entities;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
-@Entity
-class Customer{
+@Document
+public class Customer{
     private @Id @GeneratedValue Long id;
     private String firstName;
     private String lastName;
@@ -21,6 +23,15 @@ class Customer{
         this.phoneNumber = phoneNumber;
         this.email = email;
     }
+
+    public Long getId(){
+        return  this.id;
+    }
+
+    public void setId(Long id){
+        this.id = id;
+    }
+
 
     public String getFirstName(){
         return this.firstName;
