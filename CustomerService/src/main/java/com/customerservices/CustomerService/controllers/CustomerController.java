@@ -23,13 +23,7 @@ public class CustomerController {
 
     @GetMapping("/customers/{id}")
     public Customer getCustomer(@PathVariable Long id){
-       Optional opt = customerRepository.findById(id);
-       if(opt.isPresent()){
-           return (Customer) opt.get();
-       }else{
-           //TODO: Implement exception
-           return null;
-       }
+       return customerRepository.findById(id).orElse(new Customer());
     }
 
     @PostMapping("/customers")
